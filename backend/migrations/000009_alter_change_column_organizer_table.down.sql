@@ -1,0 +1,1 @@
+alter table organizers rename column last_name to second_name;

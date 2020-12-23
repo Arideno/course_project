@@ -1,0 +1,1 @@
+drop function if exists get_productive_matches_count;

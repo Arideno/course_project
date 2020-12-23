@@ -1,0 +1,1 @@
+drop function if exists get_number_of_matches_for_player;

@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  backend:
+    build: backend
+    command: sh -c "go build . && ./course_project"
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./backend:/go/src/github.com/arideno/course_project
+    restart: always
+    depends_on:
+      - db
+    environment:
+      - DB_URL=postgres://postgres:postgres@db:5432/postgres?sslmode=disable
+  db:
+    image: postgres:13-alpine
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=postgres
+
+volumes:
+  pgdata:
